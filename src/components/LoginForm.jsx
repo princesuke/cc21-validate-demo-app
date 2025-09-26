@@ -33,19 +33,32 @@ export default function LoginForm() {
     e.preventDefault();
     // console.log(formData);
     const { email, password } = formData;
+
+    // console.log(email.includes("@"));
+
     const errors = {};
     if (!email) {
       errors.email = "กรุณากรอกอีเมล์";
+    } else if (!email.includes("@")) {
+      errors.email = "รูปแบบอีเมล์ไม่ถูกต้อง";
     }
 
     if (!password) {
       errors.password = "กรุณากรอกรหัสผ่าน";
+    } else if (password.length < 6) {
+      errors.password = "รหัสผ่านต้องอย่างน้อย 6 ตัว";
     }
 
     // ให้ดักว่า ต้องมี @  แล้วแสดง error ว่า  รูปแบบอีเมล์ไม่ถูกต้อง
     // ให้ดักเพิ่มว่า ถ้าน้อยกว่า 6 ตัว  แล้วแสดง error ว่า รหัสผ่านต้องอย่างน้อย 6 ตัว
 
     setErrors(errors);
+
+    if (Object.keys(errors).length === 0) {
+      alert("ส่งข้อมูลเรียบร้อย!");
+    }
+
+    // ให้ alert ว่า ส่งข้อมูลเรียบร้อย ต้อง เครียที่มันแสดงออกด้วย
   };
 
   return (
