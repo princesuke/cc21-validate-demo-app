@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { loginSchema } from "../schemas/loginSchema";
 
 export default function LoginForm() {
   const [formData, setFormData] = useState({
@@ -32,6 +33,10 @@ export default function LoginForm() {
   const handleSubmit = (e) => {
     e.preventDefault();
     // console.log(formData);
+
+    const result = loginSchema.safeParse(formData);
+    console.log(result);
+
     const { email, password } = formData;
 
     // console.log(email.includes("@"));
