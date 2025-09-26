@@ -7,6 +7,8 @@ export default function LoginForm() {
     password: "",
     day: "",
     age: "",
+    username: "",
+    tel: "",
   });
 
   const [errors, setErrors] = useState({});
@@ -105,6 +107,34 @@ export default function LoginForm() {
               onChange={handleChange}
             />
             {errors.age && <p className={styles.error}>{errors.age[0]}</p>}
+          </div>
+
+          <div>
+            <label>Username:</label>
+            <br />
+            <input
+              type="text"
+              name="username"
+              value={formData.username}
+              className={styles.input}
+              onChange={handleChange}
+            />
+            {errors.username && (
+              <p className={styles.error}>{errors.username[0]}</p>
+            )}
+          </div>
+
+          <div>
+            <label>Tel:</label>
+            <br />
+            <input
+              type="text"
+              name="tel"
+              value={formData.tel}
+              className={styles.input}
+              onChange={handleChange}
+            />
+            {errors.tel && <p className={styles.error}>{errors.tel[0]}</p>}
           </div>
 
           <button className="mt-4" type="submit">
